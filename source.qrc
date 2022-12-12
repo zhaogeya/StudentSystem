@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="imagse">
+    <file>images/界面.png</file>
+    <file>images/界面.png</file>
+    <file>images/界面.png</file>
+    <file>images/界面1.png</file>
+  </qresource>
+  <qresource prefix="icon"/>
+</RCC>

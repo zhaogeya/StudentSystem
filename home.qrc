@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="images"/>
+  <qresource prefix="icon">
+    <file>images/下.png</file>
+    <file>images/右.png</file>
+  </qresource>
+</RCC>
