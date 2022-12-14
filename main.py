@@ -8,7 +8,7 @@ from mssqldb import *
 roles = {"学生":"student","教师":"teacher","管理员":"admin"}
 
 
-class Student:
+class User:
     def __init__(self):
         self.id = ""
         self.db = db()
@@ -38,21 +38,22 @@ class Login(QWidget):
         role=self.login_ui.post.currentText()
         #对输入的账号进行过滤,密码无需过滤
         id=id.replace("'",'').replace('"','').replace('#','').replace('-','')
+        password=password.replace("'", '').replace('"', '').replace('#', '').replace('-', '')
         id.strip()
         #从数据库中查询输入的账号、密码
         command = f"select * from {roles[role]} where id='{id}' and password='{password}'"
         try:
-            student.db.query(command)
-            if student.db.cursor.fetchall():
-                student.id=self.login_ui.username.text()
+            user.db.query(command)
+            if user.db.cursor.fetchall():
+                user.id=self.login_ui.username.text()
                 login.close()
-                student.setup()
+                user.setup()
                 home.show()
             else:
                 login.login_ui.label_5.setText("账号或密码错误")
                 login.show()
         except:
-            login.login_ui.label_5.setText("输入非法字符串")
+            login.login_ui.label_5.setText("存在非法字符串")
             print(command)
             login.show()
 
@@ -62,11 +63,35 @@ class Home(QWidget):
         super(Home, self).__init__()
         self.home_ui = Ui_stuhome()
         self.home_ui.setupUi(self)
+        #连接信号槽，当选中一个项时，调用action函数
+        self.home_ui.SystemSet.activated.connect(self.action_System)
+        self.home_ui.CourseSelection.activated.connect(self.action_Course)
+        self.home_ui.ScoreManager.activated.connect(self.action_Score)
+
+    def action_System(self):
+        #获取选中项的索引
+        result = self.home_ui.SystemSet.currentIndex().row()
+        if result == 1:                                     #如果选中第二个，则退出
+            self.close()
+        elif result == 0:                                   #如果选中第一个，则返回首页
+            self.home_ui.stackedWidget.setCurrentIndex(0)
+
+    def action_Course(self):
+        #获取选中项的索引
+        result = self.home_ui.CourseSelection.currentIndex().row()
+        if result == 0:
+            self.home_ui.stackedWidget.setCurrentIndex(1)   #如果选中第一个，则跳转到选课界面
+
+    def action_Score(self):
+        #获取选中项的索引
+        result=self.home_ui.ScoreManager.currentIndex().row()
+        if result==0:
+            self.close()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    student = Student()
+    user = User()
     login = Login()
     home = Home()
     sys.exit(app.exec_())
