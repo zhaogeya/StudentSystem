@@ -2,7 +2,7 @@ import pymssql
 
 class db:
     def __init__(self):
-        db=pymssql.connect(server="120.55.54.155",user="sa",password="123456",database="StudentSystem")
+        db=pymssql.connect(server="127.0.0.1",user="sa",password="123456",database="StudentSystem")
         self.cursor=db.cursor()
 
     def query(self,command):
