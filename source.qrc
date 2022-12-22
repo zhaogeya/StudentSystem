@@ -5,5 +5,7 @@
     <file>images/界面.png</file>
     <file>images/界面1.png</file>
   </qresource>
-  <qresource prefix="icon"/>
+  <qresource prefix="icon">
+    <file>images/忘记密码.png</file>
+  </qresource>
 </RCC>

@@ -1,8 +1,9 @@
-import pymssql
+import pyodbc
 
 class db:
     def __init__(self):
-        db=pymssql.connect(server="127.0.0.1",user="sa",password="123456",database="StudentSystem")
+        db=pyodbc.connect('DRIVER={sql server};SERVER=127.0.0.1,1433;DATABASE=StudentSystem;UID=sa;PWD=123456')
+        db.autocommit=True
         self.cursor=db.cursor()
 
     def query(self,command):
@@ -11,6 +12,4 @@ class db:
 
 # if __name__ == '__main__':
 #     db=db()
-#     command=f"select * from users where id='20200001'"
-#     db.query(command)
-#     print(db.cursor.fetchall())
+#     db.query("insert into cselection values('10', 1003);commit")
