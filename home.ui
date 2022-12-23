@@ -38,7 +38,7 @@
     <string notr="true">background-color: rgb(249, 249, 249);</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QListView" name="listView_4">
@@ -1432,6 +1432,28 @@ border-radius:10px;</string>
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="label_41">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>40</y>
+       <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>幼圆</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page_8">
     <widget class="QTableView" name="tableView_4">
@@ -1490,6 +1512,28 @@ border-radius:10px;</string>
      </property>
      <property name="text">
       <string>退课</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_42">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>40</y>
+       <width>141</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>幼圆</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>

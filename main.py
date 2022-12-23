@@ -144,19 +144,26 @@ class Home(QWidget):
             self.home_ui.Info_System.activated.connect(self.info_System)
 
     def SelectCourse(self):
-        row=self.home_ui.tableView_2.currentIndex().row()
-        cid=self.home_ui.tableView_2.model().itemData(self.home_ui.tableView_2.model().index(row,0))[0]
-        id=int(user.id)
-        command=f"begin transaction;insert into cselection values('{cid}', {id});commit transaction;"
-        user.db.query(command)
-
+        try:
+            row=self.home_ui.tableView_2.currentIndex().row()
+            cid=self.home_ui.tableView_2.model().itemData(self.home_ui.tableView_2.model().index(row,0))[0]
+            id=int(user.id)
+            command=f"begin transaction;insert into cselection values('{cid}', {id});commit transaction;"
+            user.db.query(command)
+            self.home_ui.label_41.setText("选课成功！")
+        except:
+            self.home_ui.label_41.setText("无法选择该课程！")
 
     def ExitCoure(self):
-        row = self.home_ui.tableView_4.currentIndex().row()
-        cid = self.home_ui.tableView_4.model().itemData(self.home_ui.tableView_4.model().index(row, 0))[0]
-        id = int(user.id)
-        command = f"begin transaction;delete from cselection where Cid='{cid}' and sid={id};commit transaction;"
-        user.db.query(command)
+        try:
+            row = self.home_ui.tableView_4.currentIndex().row()
+            cid = self.home_ui.tableView_4.model().itemData(self.home_ui.tableView_4.model().index(row, 0))[0]
+            id = int(user.id)
+            command = f"begin transaction;delete from cselection where Cid='{cid}' and sid={id};commit transaction;"
+            user.db.query(command)
+            self.home_ui.label_42.setText("退课成功!")
+        except:
+            self.home_ui.label_42.setText("退课失败!")
 
     def Commit(self):
         cid=self.home_ui.lineEdit.text()
